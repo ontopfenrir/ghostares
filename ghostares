@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Hacker Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        #text {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: red;
+            width: 10px;
+            height: 20px;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="text"></div>
+    <div class="cursor"></div>
+
+    <script>
+        const message = "What the f*** are you looking for?";
+        const textElement = document.getElementById("text");
+        let index = 0;
+
+        function typeText() {
+            if (index < message.length) {
+                textElement.innerHTML += message[index];
+                index++;
+                setTimeout(typeText, 100);
+            }
+        }
+
+        window.onload = typeText;
+    </script>
+</body>
+</html>
